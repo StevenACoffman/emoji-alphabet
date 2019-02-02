@@ -65,7 +65,22 @@ const compounds = {
     '!?': '⁉️'
 };
 
+const translateLetter = (input) => {
+    if (typeof input !== 'string' || !input || input.length != 1) {
+        return ''
+    }
+    const items = alphabet[input.toUpperCase()]
+    if(!items) {
+        return input
+    }
+    return items[Math.floor(Math.random()*items.length)]
+}
+
+const translate = (input) => input.split('').map(translateLetter).join('')
+
+
 module.exports = {
     alphabet: alphabet,
     compounds: compounds,
+    translate: translate,
 };
